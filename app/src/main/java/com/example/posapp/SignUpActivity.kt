@@ -59,9 +59,9 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             .addOnCompleteListener { task ->
                 progressBar!!.visibility = View.GONE
                 if (task.isSuccessful) {
-                    finish()
+//                    finish()
                     Log.e("SignUp", "Successful")
-//                    startActivity(Intent(this, ProfileActivity::class.java))
+                    startActivity(Intent(this, MapsActivity2::class.java))
                 } else {
                     if (task.exception is FirebaseAuthUserCollisionException) {
                         Toast.makeText(
