@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onStart()
         if (mAuth!!.currentUser != null) {
             finish()
-            startActivity(Intent(this, ProfileActivity::class.java))
+            startActivity(Intent(this, ::class.java))
         }
     }
 
