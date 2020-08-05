@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 // ...
 dependencies {
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
@@ -16,7 +17,7 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        applicationId "com.example.posapplication"
+        applicationId "com.example.posapp"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
@@ -58,4 +59,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+}
+
+dependencies {
+    implementation 'com.google.firebase:firebase-auth:16.0.5'
 }
