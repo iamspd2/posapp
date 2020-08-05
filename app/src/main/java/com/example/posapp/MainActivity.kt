@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        FirebaseApp.initializeApp(this);
+//        FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance()
         editTextEmail = findViewById<View>(R.id.editTextEmail) as EditText
         editTextPassword = findViewById<View>(R.id.editTextPassword) as EditText
