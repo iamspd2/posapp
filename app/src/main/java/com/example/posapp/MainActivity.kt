@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 if (task.isSuccessful) {
                     finish()
                     Log.e("SignIn", "success")
-                    val intent = Intent(this, MapsActivity2::class.java)
+                    val intent = Intent(this, ProfileActivity::class.java)
 //                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     startActivity(intent)
 //                    val intent = Intent(this, ProfileActivity::class.java)
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (mAuth!!.currentUser != null) {
             finish()
             Log.e("SignIn", "Successful")
-            startActivity(Intent(this, MapsActivity2::class.java))
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 

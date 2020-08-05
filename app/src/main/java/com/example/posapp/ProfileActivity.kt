@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.app.Activity
 import android.content.Intent
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_profile.*
 
 //import android.net.Uri
@@ -44,7 +46,9 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
 
         logout.setOnClickListener { //val cartList = cart
-            
+            FirebaseAuth.getInstance().signOut()
+            Toast.makeText(applicationContext, "Logged Out", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 }

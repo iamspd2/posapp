@@ -61,7 +61,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                 if (task.isSuccessful) {
 //                    finish()
                     Log.e("SignUp", "Successful")
-                    startActivity(Intent(this, MapsActivity2::class.java))
+                    startActivity(Intent(this, ProfileActivity::class.java))
                 } else {
                     if (task.exception is FirebaseAuthUserCollisionException) {
                         Toast.makeText(
