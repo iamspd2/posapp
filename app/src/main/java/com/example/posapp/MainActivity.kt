@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (mAuth!!.currentUser != null) {
             finish()
             Log.e("SignIn", "Successful")
-//            startActivity(Intent(this, ProfileActivity::class.java))
+            startActivity(Intent(this, MapsActivity2::class.java))
         }
     }
 
