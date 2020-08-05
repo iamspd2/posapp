@@ -2,6 +2,7 @@ package com.example.posapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 //import android.support.v7.app.AppCompatActivity
 import android.util.Patterns
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance()
         editTextEmail = findViewById<View>(R.id.editTextEmail) as EditText
         editTextPassword = findViewById<View>(R.id.editTextPassword) as EditText
@@ -57,9 +60,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 progressBar!!.visibility = View.GONE
                 if (task.isSuccessful) {
                     finish()
-                    val intent = Intent(this, ProfileActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    startActivity(intent)
+                    Log.e("SignIn", "success")
+//                    val intent = Intent(this, ProfileActivity::class.java)
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+//                    startActivity(intent)
                 } else {
                     Toast.makeText(
                         applicationContext,
@@ -74,7 +78,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onStart()
         if (mAuth!!.currentUser != null) {
             finish()
-            startActivity(Intent(this, ProfileActivity::class.java))
+            Log.e("SignIn", "Successful")
+//            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 

@@ -2,6 +2,7 @@ package com.example.posapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 //import android.support.v7.app.AlertDialog
 //import android.support.v7.app.AppCompatActivity
 import android.util.Patterns
@@ -49,7 +50,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             return
         }
         if (password.length < 6) {
-            editTextPassword!!.error = "Minimum lenght of password should be 6"
+            editTextPassword!!.error = "Minimum length of password should be 6"
             editTextPassword!!.requestFocus()
             return
         }
@@ -59,7 +60,8 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                 progressBar!!.visibility = View.GONE
                 if (task.isSuccessful) {
                     finish()
-                    startActivity(Intent(this@SignUpActivity, ProfileActivity::class.java))
+                    Log.e("SignUp", "Successful")
+//                    startActivity(Intent(this, ProfileActivity::class.java))
                 } else {
                     if (task.exception is FirebaseAuthUserCollisionException) {
                         Toast.makeText(
