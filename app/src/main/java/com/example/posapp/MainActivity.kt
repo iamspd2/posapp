@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             return
         }
         if (password.length < 6) {
-            editTextPassword!!.error = "Minimum lenght of password should be 6"
+            editTextPassword!!.error = "Minimum length of password should be 6"
             editTextPassword!!.requestFocus()
             return
         }
@@ -61,6 +61,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 if (task.isSuccessful) {
                     finish()
                     Log.e("SignIn", "success")
+                    val intent = Intent(this, MapsActivity2::class.java)
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
 //                    val intent = Intent(this, ProfileActivity::class.java)
 //                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 //                    startActivity(intent)
