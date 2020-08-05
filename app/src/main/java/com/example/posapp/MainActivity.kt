@@ -1,5 +1,95 @@
 package com.example.posapp
 
+import android.content.Intent
+import android.os.Bundle
+//import android.support.v7.app.AppCompatActivity
+import android.util.Patterns
+import android.view.View
+import android.widget.EditText
+import android.widget.ProgressBar
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+
+
+class MainActivity : AppCompatActivity(), View.OnClickListener {
+    var mAuth: FirebaseAuth? = null
+    var editTextEmail: EditText? = null
+    var editTextPassword: EditText? = null
+    var progressBar: ProgressBar? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        mAuth = FirebaseAuth.getInstance()
+        editTextEmail = findViewById<View>(R.id.editTextEmail) as EditText
+        editTextPassword = findViewById<View>(R.id.editTextPassword) as EditText
+        progressBar = findViewById<View>(R.id.progressbar) as ProgressBar
+        findViewById<View>(R.id.textViewSignup).setOnClickListener(this)
+        findViewById<View>(R.id.buttonLogin).setOnClickListener(this)
+    }
+
+    private fun userLogin() {
+        val email = editTextEmail!!.text.toString().trim { it <= ' ' }
+        val password = editTextPassword!!.text.toString().trim { it <= ' ' }
+        if (email.isEmpty()) {
+            editTextEmail!!.error = "Email is required"
+            editTextEmail!!.requestFocus()
+            return
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            editTextEmail!!.error = "Please enter a valid email"
+            editTextEmail!!.requestFocus()
+            return
+        }
+        if (password.isEmpty()) {
+            editTextPassword!!.error = "Password is required"
+            editTextPassword!!.requestFocus()
+            return
+        }
+        if (password.length < 6) {
+            editTextPassword!!.error = "Minimum lenght of password should be 6"
+            editTextPassword!!.requestFocus()
+            return
+        }
+        progressBar!!.visibility = View.VISIBLE
+        mAuth!!.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                progressBar!!.visibility = View.GONE
+                if (task.isSuccessful) {
+                    finish()
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(
+                        applicationContext,
+                        task.exception!!.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (mAuth!!.currentUser != null) {
+            finish()
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+    }
+
+    override fun onClick(view: View) {
+        when (view.id) {
+            R.id.textViewSignup -> {
+                finish()
+                startActivity(Intent(this, SignUpActivity::class.java))
+            }
+            R.id.buttonLogin -> userLogin()
+        }
+    }
+}
+
+
 //import android.os.Bundle
 
 //
@@ -7,8 +97,8 @@ package com.example.posapp
 //import android.content.DialogInterface
 //import android.content.Intent
 //import android.net.Uri
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+//import android.os.Bundle
+//import androidx.appcompat.app.AppCompatActivity
 //import com.google.android.gms.auth.api.signin.GoogleSignIn
 //import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 //import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -18,20 +108,20 @@ import androidx.appcompat.app.AppCompatActivity
 
 //
 //
-class MainActivity : AppCompatActivity() {
-    //
-//    lateinit var mGoogleSignInClient: GoogleSignInClient
-//    private val RC_SIGN_IN = 9001
-//
-//    var personName = ""
-//    var personEmail = ""
-//    var firstName = ""
-//
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
-}
+//class MainActivity : AppCompatActivity() {
+//    //
+////    lateinit var mGoogleSignInClient: GoogleSignInClient
+////    private val RC_SIGN_IN = 9001
+////
+////    var personName = ""
+////    var personEmail = ""
+////    var firstName = ""
+////
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_main)
+//    }
+//}
 
 //
 //        val gso =
