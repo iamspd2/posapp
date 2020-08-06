@@ -55,11 +55,13 @@ class ProfileActivity : AppCompatActivity() {
 //        hashMap["Phone"] = "Test"
 //        FirebaseDatabase.getInstance().reference.child("Test").child("Values").updateChildren(hashMap)
 
-        val ref = FirebaseDatabase.getInstance().reference.child("Test").child("Values")
+        val ref = FirebaseDatabase.getInstance().reference.child("Test")
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for(d in dataSnapshot.children) {
-                    Log.e("Test",d.getValue().toString())
+                    val info: Information? = dataSnapshot.getValue(Information::class.java)
+                    val txt = (info?.name ?: ) + ": " + (info?.phone ?: )
+                    Log.e("Test",txt)
                 }
             }
 
