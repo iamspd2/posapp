@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_profile.*
 
 //import android.net.Uri
@@ -44,6 +45,7 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        FirebaseDatabase.getInstance().getReference().child("Test").setValue("Connected")
 
         logout.setOnClickListener { //val cartList = cart
             FirebaseAuth.getInstance().signOut()
