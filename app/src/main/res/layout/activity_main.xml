@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:hint="email"
+                android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:paddingBottom="15dp"
                 android:textColorHint="@color/colorAccent" />
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:hint="password"
+                android:hint="Password"
                 android:inputType="textPassword"
                 android:paddingBottom="15dp"
                 android:textColorHint="@color/colorAccent" />
@@ -65,7 +65,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="7dp"
                 android:background="@drawable/rounded_button_transparent"
-                android:text="Login"
+                android:text="Log In"
                 android:textAllCaps="false"
                 android:textColor="@color/colorAccent" />
 
