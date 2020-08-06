@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_profile.*
+import java.util.*
+import kotlin.collections.HashMap
 
 //import android.net.Uri
 //import android.os.Bundle
@@ -45,7 +47,12 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        FirebaseDatabase.getInstance().getReference().child("Test").setValue("Connected")
+        FirebaseDatabase.getInstance().reference.child("Test").child("Test").setValue("Connected")
+
+        val hashMap : HashMap<String,Any> = HashMap()
+        hashMap["Name"] = "Test"
+        hashMap["Phone"] = "Test"
+        FirebaseDatabase.getInstance().reference.child("Test").child("Values").updateChildren(hashMap)
 
         logout.setOnClickListener { //val cartList = cart
             FirebaseAuth.getInstance().signOut()
