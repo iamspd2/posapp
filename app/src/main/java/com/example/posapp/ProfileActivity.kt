@@ -1,19 +1,19 @@
 package com.example.posapp
 
-import android.os.Bundle
-
 //package com.example.posapp
 //
-import android.app.Activity
+
 import android.content.Intent
-import android.view.View
+import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_profile.*
-import java.util.*
-import kotlin.collections.HashMap
+
 
 //import android.net.Uri
 //import android.os.Bundle
@@ -47,12 +47,24 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        FirebaseDatabase.getInstance().reference.child("Test").child("Test").setValue("Connected")
+//        FirebaseDatabase.getInstance().reference.child("Test").child("Test").setValue("Connected")
+//
+//        val hashMap : HashMap<String,Any> = HashMap()
+//        hashMap["Name"] = "Test"
+//        hashMap["Phone"] = "Test"
+//        FirebaseDatabase.getInstance().reference.child("Test").child("Values").updateChildren(hashMap)
 
-        val hashMap : HashMap<String,Any> = HashMap()
-        hashMap["Name"] = "Test"
-        hashMap["Phone"] = "Test"
-        FirebaseDatabase.getInstance().reference.child("Test").child("Values").updateChildren(hashMap)
+        val ref = FirebaseDatabase.getInstance().reference.child("Test").child("Values")
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val post: Post = dataSnapshot.getValue(Post::class.java)
+                System.out.println(post)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                println("The read failed: " + databaseError.code)
+            }
+        })
 
         logout.setOnClickListener { //val cartList = cart
             FirebaseAuth.getInstance().signOut()
