@@ -59,8 +59,8 @@ class ProfileActivity : AppCompatActivity() {
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for(d in dataSnapshot.children) {
-                    val info: Information? = dataSnapshot.getValue(Information::class.java)
-                    val txt = (info?.name ?: ) + ": " + (info?.phone ?: )
+                    var info: Information? = d.getValue(Information::class.java)
+                    var txt = info?.name + ": " + info?.phone
                     Log.e("Test",txt)
                 }
             }
