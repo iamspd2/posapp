@@ -5,6 +5,7 @@ package com.example.posapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -57,8 +58,9 @@ class ProfileActivity : AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance().reference.child("Test").child("Values")
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val post: Post = dataSnapshot.getValue(Post::class.java)
-                System.out.println(post)
+                for(d in dataSnapshot.children) {
+                    Log.e("Test",d.getValue().toString())
+                }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
