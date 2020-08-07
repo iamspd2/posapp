@@ -11,8 +11,9 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 
 class OrderHolder(v: View) {
-    val name: TextView = v.findViewById(R.id.orderRestro)
-    val phone: TextView = v.findViewById(R.id.plText)
+    val restro: TextView = v.findViewById(R.id.orderRestro)
+    val items: TextView = v.findViewById(R.id.orderItems)
+    val amount: TextView = v.findViewById(R.id.orderAmount)
 }
 
 //class OrderAdapter(context: Context, private val resource: Int, private val itemList: ArrayList<Information>)
@@ -49,8 +50,8 @@ class OrderAdapter(context: Context, private val resource: Int, private val item
 
 
         val i = itemList[position]
-        viewHolder.name.text = i.name
-        viewHolder.phone.text = i.phone
+        viewHolder.restro.text = i.restro
+        viewHolder.items.text = i.cost
 //        Log.e("Test", i)
 
 //        viewHolder.name.text = i
