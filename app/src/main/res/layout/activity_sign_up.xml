@@ -38,6 +38,17 @@
             android:paddingRight="15dp">
 
             <EditText
+                android:id="@+id/signUpName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:hint="Name"
+                android:inputType="text"
+                android:paddingBottom="15dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="@color/colorAccent" />
+
+            <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
