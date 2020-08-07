@@ -33,11 +33,11 @@ class Checkout : AppCompatActivity() {
         var t = 0
         var tot: Double = 0.05
         var itemDB = cart[0]
-        for (i in 1..3) {
-            itemDB += "@#" + cart[i]
+        for (i in 1..cart.size-1) {
+            itemDB += "@#@" + cart[i]
             Log.e("Checkout", cart[i]+": "+costs[i])
         }
-        for(i in 0..3) {
+        for(i in 0..cart.size-1) {
             var cost = costs[i].toInt()
             textView.append(cart[i])
             textView.append("\n")
@@ -61,7 +61,7 @@ class Checkout : AppCompatActivity() {
         hashMap["items"] = itemDB
         hashMap["time"] = ServerValue.TIMESTAMP.toString()
         val orderID = randomAlphaNumeric(7)
-        FirebaseDatabase.getInstance().reference.child(email).child("orders").child(orderID).updateChildren(hashMap)
+//        FirebaseDatabase.getInstance().reference.child(email).child("orders").child(orderID).updateChildren(hashMap)
 
 
 

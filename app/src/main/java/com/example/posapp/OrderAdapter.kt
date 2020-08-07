@@ -55,8 +55,9 @@ class OrderAdapter(context: Context, private val resource: Int, private val item
         viewHolder.cost.text = i.cost
         viewHolder.time.text = i.time
 
-        val st = i.items.split("@#")
+        val st = i.items.split("@#@")
         for (s in st) {
+            
             viewHolder.items.append(s+"\n")
         }
 

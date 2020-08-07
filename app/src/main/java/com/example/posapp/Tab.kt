@@ -95,21 +95,23 @@ class Tab : AppCompatActivity() {
                 val price = downloadData!!.getPrice()
                 fd = downloadData!!.getList()
                 Log.e("Tab", "got items")
-                var costs = mutableListOf<String>("0","0","0","0")
+                var orders = mutableListOf<String>()
+                var costs = mutableListOf<String>()
 
                 for (i in 0..3) {
                     var num = fd.getItem(i)!!.toInt()
                     var cost = num!!.times(price[i])
                     if (num != 0) {
-                        costs[i] = cost.toString()
+                        costs.add(cost.toString())
+                        orders.add(num.toString()+" x "+menu[i])
                     }
-                    Log.e("Tab", menu[i]+": "+costs[i])
+//                    Log.e("Tab", menu[i]+": "+costs[i])
                 }
 
                 //Log.e(TAG, feedAdapter.getItem(1))
 
                 val intent1 = Intent(this@Tab, Checkout::class.java)
-                intent1.putStringArrayListExtra("items", menu as ArrayList<String>?)
+                intent1.putStringArrayListExtra("items", orders as ArrayList<String>?)
                 intent1.putStringArrayListExtra("cost", costs as ArrayList<String>?)
                 intent1.putExtra("restro_name", restro)
                 intent1.putExtra("email", encEmail)
@@ -184,7 +186,7 @@ class Tab : AppCompatActivity() {
                 //val propListView = findViewById<ListView>(R.id.itemListView)
                 feedAdapter = ItemAdapter(propContext, R.layout.list_record, items)
                 propListView.adapter = feedAdapter
-                
+
             }
 
             override fun doInBackground(vararg url: String?): String {
