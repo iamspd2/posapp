@@ -40,14 +40,14 @@ class Tab : AppCompatActivity() {
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 name = dataSnapshot.child("Name").getValue(String::class.java)!!
+                Log.e("Name", name)
+                textView2.text = name
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 println("The read failed: " + databaseError.code)
             }
         })
-
-        textView2.text = name
 
 //        val call: Call<String> = ApiClient.getClient.getPhotos()
 //        call.enqueue(object : Callback<String> {

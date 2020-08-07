@@ -22,6 +22,8 @@ class Checkout : AppCompatActivity() {
 
         val intent = intent
         val cart = intent.getStringArrayListExtra("items")
+        val restro = intent.getStringExtra("restro_name")
+        Log.e("Checkout", restro)
         val costs = intent.getStringArrayListExtra("cost")
         val textView = findViewById<TextView>(R.id.textView5)
         val textView3 = findViewById<TextView>(R.id.textView6)
@@ -50,34 +52,10 @@ class Checkout : AppCompatActivity() {
         val textView2 = findViewById<TextView>(R.id.textView3)
         textView2.append("Rs. $total")
 
-//        val uri: Uri = Uri.Builder()
-//            .scheme("upi")
-//            .authority("pay")
-//            .appendQueryParameter("pa", "dash.amiya5@oksbi") // virtual ID
-//            .appendQueryParameter("pn", "Amiya") // name
-//            .appendQueryParameter("mc", "your-merchant-code") // optional
-//            .appendQueryParameter("tr", "your-transaction-ref-id") // optional
-//            .appendQueryParameter("tn", "your-transaction-note") // any note about payment
-//            .appendQueryParameter("am", "5.00") // amount
-//            .appendQueryParameter("cu", "INR") // currency
-//            .appendQueryParameter("url", "your-transaction-url") // optional
-//            .build()
-
         val button: Button = findViewById<Button>(R.id.checkout)
         button.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
                 payUsingUpi("Pay")
-//                val GOOGLE_PAY_PACKAGE_NAME = "com.google.android.apps.nbu.paisa.user"
-//                val GOOGLE_PAY_REQUEST_CODE = 123
-//
-//                val intent = Intent(Intent.ACTION_VIEW)
-//                intent.data = uri
-//                intent.setPackage(GOOGLE_PAY_PACKAGE_NAME)
-//                startActivityForResult(intent, GOOGLE_PAY_REQUEST_CODE)
-//                val intent1 = Intent(this@Checkout, PaymentActivity::class.java)
-//                intent1.putExtra("price", total)
-//                //intent1.putStringArrayListExtra("cart", cartList as ArrayList<String>?)
-//                startActivity(intent1)
             }
         })
 
