@@ -22,7 +22,7 @@ class Tab : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tab)
         val intent = intent
-        val name = intent.getStringExtra("user_name")
+        val name = "Testname"
 //        val restro = intent.getStringExtra("Restro")
         val textView2 = findViewById<TextView>(R.id.textView2)
 

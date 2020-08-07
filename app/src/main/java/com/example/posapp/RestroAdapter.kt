@@ -22,7 +22,7 @@ class RestroHolder(v: View) {
 
 }
 
-class RestroAdapter(val n: String, context: Context, private val resource: Int, private val itemList: List<String>)
+class RestroAdapter(context: Context, private val resource: Int, private val itemList: List<String>)
     : ArrayAdapter<String>(context, resource) {
 
     private val inflater = LayoutInflater.from(context)
@@ -31,7 +31,6 @@ class RestroAdapter(val n: String, context: Context, private val resource: Int, 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view: View
         val viewHolder: RestroHolder
-        val nm = n
         if (convertView == null) {
             view = inflater.inflate(resource, parent, false)
             viewHolder = RestroHolder(view)
@@ -42,7 +41,6 @@ class RestroAdapter(val n: String, context: Context, private val resource: Int, 
                 override fun onClick(v: View?) {
 
                     val intent1 = Intent(context, Tab::class.java)
-                    intent1.putExtra("user_name", nm)
 //                    intent1.putStringArrayListExtra("cost", costs as ArrayList<String>?)
                     context.startActivity(intent1)
                     Log.e("Touch","Touch")

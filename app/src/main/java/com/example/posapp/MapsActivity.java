@@ -466,7 +466,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //            items.add("bb");
 //            feedAdapter = new RestroAdapter(propContext, R.layout.restro_record, items);
 //            propListView.adapter = feedAdapter;
-            feedAdapter = new RestroAdapter(first_name, propContext, R.layout.restro_record, items);
+            feedAdapter = new RestroAdapter(propContext, R.layout.restro_record, items);
             propListView.setAdapter(feedAdapter);
 //            showDialog("Downloaded " + result + " bytes");
         }
