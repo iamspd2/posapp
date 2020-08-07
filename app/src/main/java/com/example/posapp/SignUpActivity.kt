@@ -67,7 +67,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                     val encEmail = email.replace("""[.#$]""".toRegex(), ",")
                     FirebaseDatabase.getInstance().reference.child(encEmail).child("Name").setValue(signUpName.text.toString())
                     val intent1 = Intent(this, ProfileActivity::class.java)
-                    intent1.putExtra("email", encEmail)
+//                    intent1.putExtra("email", encEmail)
                     startActivity(intent1)
                 } else {
                     if (task.exception is FirebaseAuthUserCollisionException) {

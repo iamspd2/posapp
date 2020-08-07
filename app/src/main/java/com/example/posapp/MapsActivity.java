@@ -74,8 +74,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        Intent intent = getIntent();
-        first_name = intent.getStringExtra("first_name");
+//        Intent intent = getIntent();
+//        first_name = intent.getStringExtra("first_name");
 //        final Button button = (Button) findViewById(R.id.openTab);
 //        button.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View v) {

@@ -61,9 +61,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     finish()
                     Log.e("SignIn", "success")
 //                    FirebaseDatabase.getInstance().reference.child(email).child("Name").
-                    val encEmail = email.replace("""[.#$]""".toRegex(), ",")
+//                    val encEmail = email.replace("""[.#$]""".toRegex(), ",")
                     val intent1 = Intent(this, ProfileActivity::class.java)
-                    intent1.putExtra("email", encEmail)
+//                    intent1.putExtra("email", encEmail)
                     startActivity(intent1)
 //                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 //                    val intent = Intent(this, ProfileActivity::class.java)
@@ -84,11 +84,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (mAuth!!.currentUser != null) {
             finish()
             Log.e("SignIn", "Successful")
-            val user = FirebaseAuth.getInstance().currentUser
-            val email = user?.email
-            val encEmail = email?.replace("""[.#$]""".toRegex(), ",")
+//            val user = FirebaseAuth.getInstance().currentUser
+//            val email = user?.email
+//            val encEmail = email?.replace("""[.#$]""".toRegex(), ",")
             val intent1 = Intent(this, ProfileActivity::class.java)
-            intent1.putExtra("email", encEmail)
+//            intent1.putExtra("email", encEmail)
             startActivity(intent1)
         }
     }
