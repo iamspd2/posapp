@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_profile.*
+import java.util.ArrayList
 
 
 //import android.net.Uri
@@ -55,14 +56,22 @@ class ProfileActivity : AppCompatActivity() {
 //        hashMap["Phone"] = "Test"
 //        FirebaseDatabase.getInstance().reference.child("Test").child("Values").updateChildren(hashMap)
 
+        var items = ArrayList<Information>()
+        val orderAdapter = OrderAdapter(this, R.layout.order_record, items)
+        orderListView.adapter = orderAdapter
+
         val ref = FirebaseDatabase.getInstance().reference.child("Test")
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for(d in dataSnapshot.children) {
                     var info: Information? = d.getValue(Information::class.java)
+                    if (info != null) {
+                        items.add(info)
+                    }
 //                    var txt = info?.name + ": " + info?.phone
 //                    Log.e("Test",txt)
                 }
+
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

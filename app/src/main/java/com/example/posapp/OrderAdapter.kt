@@ -23,7 +23,7 @@ class OrderHolder(v: View) {
 
 }
 
-class OrderAdapter(val n: String, context: Context, private val resource: Int, private val itemList: List<Information>)
+class OrderAdapter(context: Context, private val resource: Int, private val itemList: List<Information>)
     : ArrayAdapter<Information>(context, resource) {
 
     private val inflater = LayoutInflater.from(context)
@@ -50,7 +50,7 @@ class OrderAdapter(val n: String, context: Context, private val resource: Int, p
 
         viewHolder.name.text = i?.name
         viewHolder.phone.text = i?.phone
-        
+
         //Log.e("Adapter test", itemList[0])
         //viewHolder.tvArtist.text = currentApp.toString()
         //viewHolder.price.text = "Rs. $priceItem"
