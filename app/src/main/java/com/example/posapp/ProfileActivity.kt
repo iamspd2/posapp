@@ -40,13 +40,7 @@ import java.util.ArrayList
 //
 //
 class ProfileActivity : AppCompatActivity() {
-    //    var textView: TextView? = null
-//    var imageView: ImageView? = null
-//    var editText: EditText? = null
-//    var uriProfileImage: Uri? = null
-//    var progressBar: ProgressBar? = null
-//    var profileImageUrl: String? = null
-//    var mAuth: FirebaseAuth? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
@@ -57,11 +51,11 @@ class ProfileActivity : AppCompatActivity() {
 //        hashMap["Phone"] = "Test"
 //        FirebaseDatabase.getInstance().reference.child("Test").child("Values").updateChildren(hashMap)
 
-        val i1 = Information("Check","1234")
-        val i2 = Information("Check","123456")
+        val email = intent.getStringExtra("email")
+
         var items = ArrayList<Information>()
 
-        val ref = FirebaseDatabase.getInstance().reference.child("Test")
+        val ref = FirebaseDatabase.getInstance().reference.child(email)
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Log.e("Test","Nothing")
@@ -70,12 +64,8 @@ class ProfileActivity : AppCompatActivity() {
                     if (info != null) {
                         items.add(info)
                     }
-                    var txt = info?.name + ": " + info?.phone
-                    Log.e("Test",txt)
                 }
-                for (i in items) {
-                    Log.e("Test", i.name+" :: "+i.phone)
-                }
+
                 val orderAdapter = OrderAdapter(applicationContext, R.layout.order_record, items)
                 orderListView.adapter = orderAdapter
 //                orderAdapter.notifyDataSetChanged()
