@@ -85,6 +85,10 @@ class ProfileActivity : AppCompatActivity() {
             }
         })
 
+        goToMaps.setOnClickListener { //val cartList = cart
+            startActivity(Intent(this, MapsActivity::class.java))
+        }
+        
         logout.setOnClickListener { //val cartList = cart
             FirebaseAuth.getInstance().signOut()
             Toast.makeText(applicationContext, "Logged Out", Toast.LENGTH_SHORT).show()
