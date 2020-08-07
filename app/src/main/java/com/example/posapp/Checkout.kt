@@ -55,7 +55,10 @@ class Checkout : AppCompatActivity() {
         val hashMap : HashMap<String,Any> = HashMap()
         hashMap["restro"] = restro
         hashMap["cost"] = total
-        FirebaseDatabase.getInstance().reference.child(email).child("orders").updateChildren(hashMap)
+        val orderID = randomAlphaNumeric(7)
+        FirebaseDatabase.getInstance().reference.child(email).child("orders").child(orderID).updateChildren(hashMap)
+
+
 
         val button: Button = findViewById<Button>(R.id.checkout)
         button.setOnClickListener(object : View.OnClickListener{
@@ -64,6 +67,17 @@ class Checkout : AppCompatActivity() {
             }
         })
 
+    }
+
+    fun randomAlphaNumeric(count: Int): String {
+        var count = count
+        val ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        val builder = StringBuilder()
+        while (count-- != 0) {
+            val character = (Math.random() * ALPHA_NUMERIC_STRING.length).toInt()
+            builder.append(ALPHA_NUMERIC_STRING[character])
+        }
+        return builder.toString()
     }
 
     fun payUsingUpi(
