@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ServerValue
 
 
 class Checkout : AppCompatActivity() {
@@ -31,7 +32,9 @@ class Checkout : AppCompatActivity() {
         val textView3 = findViewById<TextView>(R.id.textView6)
         var t = 0
         var tot: Double = 0.05
-        for (i in 0..3) {
+        var itemDB = cart[0]
+        for (i in 1..3) {
+            itemDB += "@#" + cart[i]
             Log.e("Checkout", cart[i]+": "+costs[i])
         }
         for(i in 0..3) {
@@ -55,6 +58,8 @@ class Checkout : AppCompatActivity() {
         val hashMap : HashMap<String,Any> = HashMap()
         hashMap["restro"] = restro
         hashMap["cost"] = "Rs. $total"
+        hashMap["items"] = itemDB
+        hashMap["time"] = ServerValue.TIMESTAMP
         val orderID = randomAlphaNumeric(7)
         FirebaseDatabase.getInstance().reference.child(email).child("orders").child(orderID).updateChildren(hashMap)
 
