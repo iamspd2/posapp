@@ -6,6 +6,8 @@ package com.example.posapp
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -90,16 +92,40 @@ class ProfileActivity : AppCompatActivity() {
             }
         })
 
-        goToMaps.setOnClickListener { //val cartList = cart
-            startActivity(Intent(this, MapsActivity::class.java))
-        }
+//        goToMaps.setOnClickListener { //val cartList = cart
+//            startActivity(Intent(this, MapsActivity::class.java))
+//        }
 
-        logout.setOnClickListener { //val cartList = cart
-            FirebaseAuth.getInstance().signOut()
-            Toast.makeText(applicationContext, "Logged Out", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, MainActivity::class.java))
-        }
+//        logout.setOnClickListener { //val cartList = cart
+//            FirebaseAuth.getInstance().signOut()
+//            Toast.makeText(applicationContext, "Logged Out", Toast.LENGTH_SHORT).show()
+//            startActivity(Intent(this, MainActivity::class.java))
+//        }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.nav_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.orderNow -> {
+                startActivity(Intent(this, MapsActivity::class.java))
+            }
+
+            R.id.orderNow -> {
+                FirebaseAuth.getInstance().signOut()
+                Toast.makeText(applicationContext, "Logged Out", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+            else ->
+                return super.onOptionsItemSelected(item)
+        }
+        return true
+    }
+
 }
 //        mAuth = FirebaseAuth.getInstance()
 //        val toolbar: Toolbar = findViewById(R.id.toolbar)

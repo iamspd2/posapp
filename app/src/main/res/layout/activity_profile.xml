@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="#000000"
     android:scrollbars="vertical"
     tools:context=".ProfileActivity">
@@ -12,6 +12,7 @@
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="176dp"
         android:layout_marginEnd="72dp"
         android:background="@drawable/btn_rounded"
         android:text="Logout"
@@ -22,7 +23,8 @@
         android:id="@+id/goToMaps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="164dp"
         android:background="@drawable/btn_rounded"
         android:text="Order"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,20 +32,26 @@
 
     <ListView
         android:id="@+id/orderListView"
-        android:layout_width="300dp"
+        android:layout_width="311dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goToMaps" />
+        app:layout_constraintTop_toBottomOf="@+id/goToMaps"
+        app:layout_constraintVertical_weight="1" />
 
     <TextView
         android:id="@+id/emptyOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="Make your first order!"
         android:textAlignment="center"
         android:textColor="#E6E6E6"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/orderListView"
