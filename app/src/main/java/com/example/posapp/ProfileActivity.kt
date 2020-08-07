@@ -6,7 +6,6 @@ package com.example.posapp
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -15,7 +14,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_profile.*
-import java.util.ArrayList
+import java.util.*
 
 
 //import android.net.Uri
@@ -59,15 +58,20 @@ class ProfileActivity : AppCompatActivity() {
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Log.e("Test","Nothing")
-                for(d in dataSnapshot.children) {
-                    var info: Information? = d.getValue(Information::class.java)
-                    if (info != null) {
-                        items.add(info)
-                    }
-                }
 
-                val orderAdapter = OrderAdapter(applicationContext, R.layout.order_record, items)
-                orderListView.adapter = orderAdapter
+                val userName: String? = dataSnapshot.child("Name").getValue(String::class.java)
+                Log.e("Test", userName)
+
+
+//                for(d in dataSnapshot.children) {
+//                    var info: Information? = d.getValue(Information::class.java)
+//                    if (info != null) {
+//                        items.add(info)
+//                    }
+//                }
+//
+//                val orderAdapter = OrderAdapter(applicationContext, R.layout.order_record, items)
+//                orderListView.adapter = orderAdapter
 //                orderAdapter.notifyDataSetChanged()
             }
 

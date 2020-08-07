@@ -1,19 +1,16 @@
 package com.example.posapp
 
+//import android.support.v7.app.AppCompatActivity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-//import android.support.v7.app.AppCompatActivity
 import android.util.Patterns
 import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_sign_up.*
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -64,8 +61,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     finish()
                     Log.e("SignIn", "success")
 //                    FirebaseDatabase.getInstance().reference.child(email).child("Name").
+                    val encEmail = email.replace("""[.#$]""".toRegex(), ",")
                     val intent1 = Intent(this, ProfileActivity::class.java)
-                    intent1.putExtra("email", email)
+                    intent1.putExtra("email", encEmail)
                     startActivity(intent1)
 //                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 //                    val intent = Intent(this, ProfileActivity::class.java)
@@ -86,7 +84,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (mAuth!!.currentUser != null) {
             finish()
             Log.e("SignIn", "Successful")
-            startActivity(Intent(this, ProfileActivity::class.java))
+            val user = FirebaseAuth.getInstance().currentUser
+            val email = user?.email
+            val encEmail = email?.replace("""[.#$]""".toRegex(), ",")
+            val intent1 = Intent(this, ProfileActivity::class.java)
+            intent1.putExtra("email", encEmail)
+            startActivity(intent1)
         }
     }
 
