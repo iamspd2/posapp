@@ -70,7 +70,7 @@ class ProfileActivity : AppCompatActivity() {
                 var ordFlag = dataSnapshot.child("orders").exists()
                 if (!ordFlag) {
                     Log.e("Test","Test")
-//                    emptyOrder.setText("Make your first order!")
+                    emptyOrder.setText("Make your first order!")
                 } else {
                     val orders = dataSnapshot.child("orders").children
 
@@ -115,7 +115,7 @@ class ProfileActivity : AppCompatActivity() {
                 startActivity(Intent(this, MapsActivity::class.java))
             }
 
-            R.id.orderNow -> {
+            R.id.logoutNow -> {
                 FirebaseAuth.getInstance().signOut()
                 Toast.makeText(applicationContext, "Logged Out", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, MainActivity::class.java))
