@@ -60,8 +60,8 @@ class ProfileActivity : AppCompatActivity() {
         val i1 = Information("Check","1234")
         val i2 = Information("Check","123456")
         var items = ArrayList<Information>()
-        items.add(i1)
-        items.add(i2)
+//        items.add(i1)
+//        items.add(i2)
 //        var itemss = ArrayList<ArrayList<String>>()
 //        var i1 = ArrayList<String>()
 //        i1.add("Swra")
@@ -72,29 +72,29 @@ class ProfileActivity : AppCompatActivity() {
 //        i2.add("3456")
 //        itemss.add(i2)
 
-        val orderAdapter = OrderAdapter(this, R.layout.order_record, items)
+//        val orderAdapter = OrderAdapter(this, R.layout.order_record, items)
 //        val orderAdapter = ArrayAdapter(this, R.layout.order_record, itemss)
-        orderListView.adapter = orderAdapter
+//        orderListView.adapter = orderAdapter
 
-        Log.e("Test", orderAdapter.count.toString())
+//        Log.e("Test", orderAdapter.count.toString())
 
         val ref = FirebaseDatabase.getInstance().reference.child("Test")
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Log.e("Test","Nothing")
-//                for(d in dataSnapshot.children) {
-//                    var info: Information? = d.getValue(Information::class.java)
-////                    if (info != null) {
-////                        items.add(info)
-////                    }
-//                    var txt = info?.name + ": " + info?.phone
-//                    Log.e("Test",txt)
-//                }
-//                for (i in items) {
-//                    Log.e("Test", i.name+" :: "+i.phone)
-//                }
-//                val orderAdapter = OrderAdapter(applicationContext, R.layout.order_record, items)
-//                orderListView.adapter = orderAdapter
+                for(d in dataSnapshot.children) {
+                    var info: Information? = d.getValue(Information::class.java)
+                    if (info != null) {
+                        items.add(info)
+                    }
+                    var txt = info?.name + ": " + info?.phone
+                    Log.e("Test",txt)
+                }
+                for (i in items) {
+                    Log.e("Test", i.name+" :: "+i.phone)
+                }
+                val orderAdapter = OrderAdapter(applicationContext, R.layout.order_record, items)
+                orderListView.adapter = orderAdapter
 //                orderAdapter.notifyDataSetChanged()
             }
 
