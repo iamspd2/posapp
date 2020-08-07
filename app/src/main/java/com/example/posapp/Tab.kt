@@ -8,6 +8,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_tab.*
 import java.net.URL
 import java.util.ArrayList
@@ -22,9 +28,24 @@ class Tab : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tab)
         val intent = intent
-        val name = "Testname"
-//        val restro = intent.getStringExtra("Restro")
+        var name = "Testname"
+        val restro = intent.getStringExtra("restro_name")
         val textView2 = findViewById<TextView>(R.id.textView2)
+
+        val user = FirebaseAuth.getInstance().currentUser
+        val email = user?.email
+        val encEmail = email?.replace("""[.#$]""".toRegex(), ",")
+
+        val ref = FirebaseDatabase.getInstance().reference.child(encEmail!!)
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                name = dataSnapshot.child("Name").getValue(String::class.java)!!
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                println("The read failed: " + databaseError.code)
+            }
+        })
 
         textView2.text = name
 
@@ -90,6 +111,7 @@ class Tab : AppCompatActivity() {
                 val intent1 = Intent(this@Tab, Checkout::class.java)
                 intent1.putStringArrayListExtra("items", menu as ArrayList<String>?)
                 intent1.putStringArrayListExtra("cost", costs as ArrayList<String>?)
+                intent1.putExtra("restro_name", restro)
                 startActivity(intent1)
             }
         })

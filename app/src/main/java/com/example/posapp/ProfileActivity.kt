@@ -50,11 +50,15 @@ class ProfileActivity : AppCompatActivity() {
 //        hashMap["Phone"] = "Test"
 //        FirebaseDatabase.getInstance().reference.child("Test").child("Values").updateChildren(hashMap)
 
-        val email = intent.getStringExtra("email")
+//        val email = intent.getStringExtra("email")
 
         var items = ArrayList<Information>()
 
-        val ref = FirebaseDatabase.getInstance().reference.child(email)
+        val user = FirebaseAuth.getInstance().currentUser
+        val email = user?.email
+        val encEmail = email?.replace("""[.#$]""".toRegex(), ",")
+
+        val ref = FirebaseDatabase.getInstance().reference.child(encEmail!!)
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Log.e("Test","Nothing")
@@ -88,7 +92,7 @@ class ProfileActivity : AppCompatActivity() {
         goToMaps.setOnClickListener { //val cartList = cart
             startActivity(Intent(this, MapsActivity::class.java))
         }
-        
+
         logout.setOnClickListener { //val cartList = cart
             FirebaseAuth.getInstance().signOut()
             Toast.makeText(applicationContext, "Logged Out", Toast.LENGTH_SHORT).show()

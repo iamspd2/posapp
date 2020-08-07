@@ -40,8 +40,10 @@ class RestroAdapter(context: Context, private val resource: Int, private val ite
             pl.setOnClickListener(object : View.OnClickListener{
                 override fun onClick(v: View?) {
 
+                    val j = itemList[position]
+                    val st = j.split(":#:")
                     val intent1 = Intent(context, Tab::class.java)
-//                    intent1.putStringArrayListExtra("cost", costs as ArrayList<String>?)
+                    intent1.putExtra("restro_name",st[0])
                     context.startActivity(intent1)
                     Log.e("Touch","Touch")
                 }
