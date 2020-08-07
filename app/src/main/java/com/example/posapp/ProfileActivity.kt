@@ -57,11 +57,11 @@ class ProfileActivity : AppCompatActivity() {
 //        hashMap["Phone"] = "Test"
 //        FirebaseDatabase.getInstance().reference.child("Test").child("Values").updateChildren(hashMap)
 
-//        val i1 = Information("Check","1234")
-//        val i2 = Information("Check","123456")
-//        var items = ArrayList<Information>()
-//        items.add(i1)
-//        items.add(i2)
+        val i1 = Information("Check","1234")
+        val i2 = Information("Check","123456")
+        var items = ArrayList<Information>()
+        items.add(i1)
+        items.add(i2)
 //        var itemss = ArrayList<ArrayList<String>>()
 //        var i1 = ArrayList<String>()
 //        i1.add("Swra")
@@ -72,7 +72,7 @@ class ProfileActivity : AppCompatActivity() {
 //        i2.add("3456")
 //        itemss.add(i2)
 
-        val orderAdapter = OrderAdapter(this, R.layout.order_record, itemss)
+        val orderAdapter = OrderAdapter(this, R.layout.order_record, items)
 //        val orderAdapter = ArrayAdapter(this, R.layout.order_record, itemss)
         orderListView.adapter = orderAdapter
 

@@ -20,8 +20,8 @@ class OrderHolder(v: View) {
 //    : ArrayAdapter<Information>(context, resource) {
 
 
-class OrderAdapter(context: Context, private val resource: Int, private val itemList: List<List<String>>)
-    : ArrayAdapter<List<String>>(context, resource) {
+class OrderAdapter(context: Context, private val resource: Int, private val itemList: List<Information>)
+    : ArrayAdapter<Information>(context, resource) {
 
     private val inflater = LayoutInflater.from(context)
 
@@ -50,8 +50,8 @@ class OrderAdapter(context: Context, private val resource: Int, private val item
 
 
         val i = itemList[position]
-        viewHolder.name.text = i[0]
-        viewHolder.phone.text = i[1]
+        viewHolder.name.text = i.name
+        viewHolder.phone.text = i.phone
 //        Log.e("Test", i)
 
 //        viewHolder.name.text = i
