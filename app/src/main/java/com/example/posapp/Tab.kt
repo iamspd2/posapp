@@ -184,40 +184,7 @@ class Tab : AppCompatActivity() {
                 //val propListView = findViewById<ListView>(R.id.itemListView)
                 feedAdapter = ItemAdapter(propContext, R.layout.list_record, items)
                 propListView.adapter = feedAdapter
-
-
-
-                //val button2: Button = findViewById<Button>(R.id.button2)
-//                button2.setOnClickListener(object : View.OnClickListener {
-//                    override fun onClick(v: View?) {
-//                        //val cartList = cart
-//                        var costs = mutableListOf<String>("0", "0", "0", "0")
-//
-//                        for (i in 0..3) {
-//                            var num = feedAdapter.getItem(i)!!.toInt()
-//                            var cost = num!!.times(price[i])
-//                            if (cost != null) {
-//                                costs[i] = cost.toString()
-//                            }
-//                            Log.e("Tab", menu[i] + ": " + costs[i])
-//                        }
-//
-//                        //Log.e(TAG, feedAdapter.getItem(1))
-//
-//                        val intent1 = Intent(this@Tab, Checkout::class.java)
-//                        intent1.putStringArrayListExtra("items", menu as ArrayList<String>?)
-//                        intent1.putStringArrayListExtra("cost", costs as ArrayList<String>?)
-//                        startActivity(intent1)
-//                    }
-//                })
-
-//                it.forEach {
-//                    Log.e("onPostExecute", it)
-//                }
-//                pr.forEach {
-//                    Log.e("onPostExecute", it)
-//                }
-
+                
             }
 
             override fun doInBackground(vararg url: String?): String {
