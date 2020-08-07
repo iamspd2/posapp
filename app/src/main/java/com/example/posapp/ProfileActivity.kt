@@ -62,8 +62,11 @@ class ProfileActivity : AppCompatActivity() {
                 val userName: String? = dataSnapshot.child("Name").getValue(String::class.java)
                 Log.e("Test", userName)
                 var ordFlag = dataSnapshot.child("orders").exists()
-
-
+                if (ordFlag) {
+                    emptyOrder.setText("Items Found!")
+                } else {
+                    emptyOrder.setText("Make your first order!")
+                }
 
 //                for(d in dataSnapshot.children) {
 //                    var info: Information? = d.getValue(Information::class.java)
