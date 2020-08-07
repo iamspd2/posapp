@@ -56,7 +56,11 @@ class ProfileActivity : AppCompatActivity() {
 //        hashMap["Phone"] = "Test"
 //        FirebaseDatabase.getInstance().reference.child("Test").child("Values").updateChildren(hashMap)
 
+        val i1 = Information("Check","1234")
+        val i2 = Information("Check","123456")
         var items = ArrayList<Information>()
+        items.add(i1)
+        items.add(i2)
         val orderAdapter = OrderAdapter(this, R.layout.order_record, items)
         orderListView.adapter = orderAdapter
 
@@ -65,13 +69,18 @@ class ProfileActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for(d in dataSnapshot.children) {
                     var info: Information? = d.getValue(Information::class.java)
-                    if (info != null) {
-                        items.add(info)
-                    }
-//                    var txt = info?.name + ": " + info?.phone
-//                    Log.e("Test",txt)
+//                    if (info != null) {
+//                        items.add(info)
+//                    }
+                    var txt = info?.name + ": " + info?.phone
+                    Log.e("Test",txt)
                 }
-
+//                for (i in items) {
+//                    Log.e("Test", i.name+" :: "+i.phone)
+//                }
+//                val orderAdapter = OrderAdapter(applicationContext, R.layout.order_record, items)
+//                orderListView.adapter = orderAdapter
+//                orderAdapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
