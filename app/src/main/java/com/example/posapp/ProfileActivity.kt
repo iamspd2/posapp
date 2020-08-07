@@ -63,24 +63,24 @@ class ProfileActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Log.e("Test","Nothing")
 
-                val userName: String? = dataSnapshot.child("Name").getValue(String::class.java)
-                Log.e("Test", userName)
+//                val userName: String? = dataSnapshot.child("Name").getValue(String::class.java)
+//                Log.e("Test", userName)
                 var ordFlag = dataSnapshot.child("orders").exists()
-                if (ordFlag) {
-                    emptyOrder.setText("Items Found!")
-                } else {
+                if (!ordFlag) {
                     emptyOrder.setText("Make your first order!")
-                }
+                } else {
+                    val orders = dataSnapshot.child("orders").children
 
-//                for(d in dataSnapshot.children) {
-//                    var info: Information? = d.getValue(Information::class.java)
-//                    if (info != null) {
-//                        items.add(info)
-//                    }
-//                }
-//
-//                val orderAdapter = OrderAdapter(applicationContext, R.layout.order_record, items)
-//                orderListView.adapter = orderAdapter
+                    for(d in orders) {
+                        var info: Information? = d.getValue(Information::class.java)
+                        if (info != null) {
+                            items.add(info)
+                        }
+                    }
+
+                    val orderAdapter = OrderAdapter(applicationContext, R.layout.order_record, items)
+                    orderListView.adapter = orderAdapter
+                }
 //                orderAdapter.notifyDataSetChanged()
             }
 
