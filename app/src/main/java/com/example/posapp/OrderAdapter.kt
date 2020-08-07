@@ -12,17 +12,18 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
 
-class ProfileHolder(v: View) {
-    val name: TextView = v.findViewById(R.id.restroName)
-    val cuisines: TextView = v.findViewById(R.id.restroCuisine)
-    val timings: TextView = v.findViewById(R.id.restroTiming)
-    val ratings: TextView = v.findViewById(R.id.restroRating)
+class OrderHolder(v: View) {
+    val name: TextView = v.findViewById(R.id.order1)
+    val phone: TextView = v.findViewById(R.id.order2)
+//    val cuisines: TextView = v.findViewById(R.id.restroCuisine)
+//    val timings: TextView = v.findViewById(R.id.restroTiming)
+//    val ratings: TextView = v.findViewById(R.id.restroRating)
     //val tvArtist: TextView = v.findViewById(R.id.tvArtist)
 //    val price: TextView = v.findViewById(R.id.eachPrice)
 
 }
 
-class ProfileAdapter(val n: String, context: Context, private val resource: Int, private val itemList: List<String>)
+class OrderAdapter(val n: String, context: Context, private val resource: Int, private val itemList: List<String>)
     : ArrayAdapter<String>(context, resource) {
 
     private val inflater = LayoutInflater.from(context)
@@ -30,28 +31,17 @@ class ProfileAdapter(val n: String, context: Context, private val resource: Int,
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view: View
-        val viewHolder: RestroHolder
-        val nm = n
+        val viewHolder: OrderHolder
+//        val nm = n
         if (convertView == null) {
             view = inflater.inflate(resource, parent, false)
-            viewHolder = RestroHolder(view)
+            viewHolder = OrderHolder(view)
             view.tag = viewHolder
 
-            val pl = view.findViewById<Button>(R.id.openTab)
-            pl.setOnClickListener(object : View.OnClickListener{
-                override fun onClick(v: View?) {
-
-                    val intent1 = Intent(context, Tab::class.java)
-                    intent1.putExtra("user_name", nm)
-//                    intent1.putStringArrayListExtra("cost", costs as ArrayList<String>?)
-                    context.startActivity(intent1)
-                    Log.e("Touch","Touch")
-                }
-            })
 
         } else {
             view = convertView
-            viewHolder = view.tag as RestroHolder
+            viewHolder = view.tag as OrderHolder
         }
 
 //        val str = itemList[position]
