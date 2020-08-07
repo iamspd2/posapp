@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_profile.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -55,6 +56,11 @@ class ProfileActivity : AppCompatActivity() {
 //        val email = intent.getStringExtra("email")
 
         var items = ArrayList<Information>()
+
+        val sfd = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+        val str = sfd.format(Date(1596826053965))
+
+        Log.e("Date", str)
 
         val user = FirebaseAuth.getInstance().currentUser
         val email = user?.email
