@@ -61,7 +61,7 @@ class Checkout : AppCompatActivity() {
         hashMap["items"] = itemDB
         hashMap["time"] = ServerValue.TIMESTAMP.toString()
         val orderID = randomAlphaNumeric(7)
-//        FirebaseDatabase.getInstance().reference.child(email).child("orders").child(orderID).updateChildren(hashMap)
+        FirebaseDatabase.getInstance().reference.child(email).child("orders").child(orderID).updateChildren(hashMap)
 
 
 

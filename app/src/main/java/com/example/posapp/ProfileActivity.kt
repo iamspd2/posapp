@@ -67,7 +67,8 @@ class ProfileActivity : AppCompatActivity() {
 //                Log.e("Test", userName)
                 var ordFlag = dataSnapshot.child("orders").exists()
                 if (!ordFlag) {
-                    emptyOrder.setText("Make your first order!")
+                    Log.e("Test","Test")
+//                    emptyOrder.setText("Make your first order!")
                 } else {
                     val orders = dataSnapshot.child("orders").children
 
