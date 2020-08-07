@@ -60,23 +60,6 @@ class ProfileActivity : AppCompatActivity() {
         val i1 = Information("Check","1234")
         val i2 = Information("Check","123456")
         var items = ArrayList<Information>()
-//        items.add(i1)
-//        items.add(i2)
-//        var itemss = ArrayList<ArrayList<String>>()
-//        var i1 = ArrayList<String>()
-//        i1.add("Swra")
-//        i1.add("1234")
-//        itemss.add(i1)
-//        var i2 = ArrayList<String>()
-//        i2.add("adasd")
-//        i2.add("3456")
-//        itemss.add(i2)
-
-//        val orderAdapter = OrderAdapter(this, R.layout.order_record, items)
-//        val orderAdapter = ArrayAdapter(this, R.layout.order_record, itemss)
-//        orderListView.adapter = orderAdapter
-
-//        Log.e("Test", orderAdapter.count.toString())
 
         val ref = FirebaseDatabase.getInstance().reference.child("Test")
         ref.addValueEventListener(object : ValueEventListener {

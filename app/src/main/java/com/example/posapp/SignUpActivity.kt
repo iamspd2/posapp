@@ -13,6 +13,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_sign_up.*
+import java.util.ArrayList
 
 
 class SignUpActivity : AppCompatActivity(), View.OnClickListener {
@@ -61,7 +64,10 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                 if (task.isSuccessful) {
 //                    finish()
                     Log.e("SignUp", "Successful")
-                    startActivity(Intent(this, ProfileActivity::class.java))
+                    FirebaseDatabase.getInstance().reference.child(email).child("Name").setValue(signUpName.text)
+                    val intent1 = Intent(this, ProfileActivity::class.java)
+                    intent1.putExtra("email", email)
+                    startActivity(intent1)
                 } else {
                     if (task.exception is FirebaseAuthUserCollisionException) {
                         Toast.makeText(

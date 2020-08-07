@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_sign_up.*
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -61,9 +63,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 if (task.isSuccessful) {
                     finish()
                     Log.e("SignIn", "success")
-                    val intent = Intent(this, ProfileActivity::class.java)
+//                    FirebaseDatabase.getInstance().reference.child(email).child("Name").
+                    val intent1 = Intent(this, ProfileActivity::class.java)
+                    intent1.putExtra("email", email)
+                    startActivity(intent1)
 //                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    startActivity(intent)
 //                    val intent = Intent(this, ProfileActivity::class.java)
 //                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 //                    startActivity(intent)
