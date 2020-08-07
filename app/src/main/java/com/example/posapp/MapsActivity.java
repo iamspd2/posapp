@@ -74,24 +74,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-//        Intent intent = getIntent();
-//        first_name = intent.getStringExtra("first_name");
-//        final Button button = (Button) findViewById(R.id.openTab);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent intent1 = new Intent(MapsActivity.this, Tab.class);
-//                intent1.putExtra("username", first_name);
-//                startActivity(intent1);
-//                //myIntent.putExtra("google_id", googleId)
-//                //myIntent.putExtra("google_first_name", googleFirstName)
-////            myIntent.putExtra("google_last_name", googleLastName)
-////            myIntent.putExtra("google_email", googleEmail)
-////            myIntent.putExtra("google_profile_pic_url", googleProfilePicURL)
-////            myIntent.putExtra("google_id_token", googleIdToken)
-////                this.startActivity(myIntent)
-//            }
-//        });
-
         URL myUrl = null;
         try {
             myUrl = new URL("https://developers.zomato.com/api/v2.1/search?count=10&lat=21.493179&lon=83.986847&radius=1000&sort=rating");
