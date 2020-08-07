@@ -60,8 +60,8 @@ class ProfileActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for(d in dataSnapshot.children) {
                     var info: Information? = d.getValue(Information::class.java)
-                    var txt = info?.name + ": " + info?.phone
-                    Log.e("Test",txt)
+//                    var txt = info?.name + ": " + info?.phone
+//                    Log.e("Test",txt)
                 }
             }
 

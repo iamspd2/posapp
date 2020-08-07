@@ -23,8 +23,8 @@ class OrderHolder(v: View) {
 
 }
 
-class OrderAdapter(val n: String, context: Context, private val resource: Int, private val itemList: List<String>)
-    : ArrayAdapter<String>(context, resource) {
+class OrderAdapter(val n: String, context: Context, private val resource: Int, private val itemList: List<Information>)
+    : ArrayAdapter<Information>(context, resource) {
 
     private val inflater = LayoutInflater.from(context)
     var st = arrayListOf<String>("0","0","0","0")
@@ -44,30 +44,19 @@ class OrderAdapter(val n: String, context: Context, private val resource: Int, p
             viewHolder = view.tag as OrderHolder
         }
 
-//        val str = itemList[position]
-//        val p = str.indexOf(':')
-//        val itemName = str.substring(0,p)
-//        val priceItem = str.substring(p+1)
-        val i = itemList[position]
-        val str = i.split(":#:")
-        viewHolder.name.text = str[0]
-        viewHolder.cuisines.text = str[1]
-        viewHolder.timings.text = str[2]
-        if(str[3] == "0")
-            viewHolder.ratings.text = "Not Rated"
-        else
-            viewHolder.ratings.text = str[3]
-        //viewHolder.name.text = str[0]
+        val i = getItem(position)
+
+
+
+        viewHolder.name.text = i?.name
+        viewHolder.phone.text = i?.phone
+        
         //Log.e("Adapter test", itemList[0])
         //viewHolder.tvArtist.text = currentApp.toString()
         //viewHolder.price.text = "Rs. $priceItem"
 
         return view
     }
-
-//    override fun getItem(position: Int): String? {
-//        return st[position]
-//    }
 
     override fun getCount(): Int {
         return itemList.size
