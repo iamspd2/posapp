@@ -16,8 +16,12 @@ class OrderHolder(v: View) {
     val phone: TextView = v.findViewById(R.id.order2)
 }
 
-class OrderAdapter(context: Context, private val resource: Int, private val itemList: List<Information>)
-    : ArrayAdapter<String>(context, resource) {
+//class OrderAdapter(context: Context, private val resource: Int, private val itemList: ArrayList<Information>)
+//    : ArrayAdapter<Information>(context, resource) {
+
+
+class OrderAdapter(context: Context, private val resource: Int, private val itemList: List<List<String>>)
+    : ArrayAdapter<List<String>>(context, resource) {
 
     private val inflater = LayoutInflater.from(context)
 
@@ -30,10 +34,10 @@ class OrderAdapter(context: Context, private val resource: Int, private val item
             viewHolder = OrderHolder(view)
             view.tag = viewHolder
 
-            Log.e("Yo","Yo")
+            Log.e("Test","Yo")
 //            val i = itemList[position]
 //
-//            viewHolder.name.text = i.name
+//            viewHolder.name.text = "DSD"
 //            Log.e("Adapter test", i.name)
 //            viewHolder.phone.text = i.phone
 //            Log.e("Adapter test", i.phone)
@@ -46,11 +50,14 @@ class OrderAdapter(context: Context, private val resource: Int, private val item
 
 
         val i = itemList[position]
+        viewHolder.name.text = i[0]
+        viewHolder.phone.text = i[1]
+//        Log.e("Test", i)
 
-        viewHolder.name.text = i.name
-        Log.e("Adapter test", i.name)
-        viewHolder.phone.text = i.phone
-        Log.e("Adapter test", i.phone)
+//        viewHolder.name.text = i
+//        Log.e("Test", i.name)
+//        viewHolder.phone.text = i.phone
+//        Log.e("Test", i.phone)
 
         //Log.e("Adapter test", itemList[0])
         //viewHolder.tvArtist.text = currentApp.toString()

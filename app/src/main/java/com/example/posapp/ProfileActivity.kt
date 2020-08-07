@@ -6,6 +6,7 @@ package com.example.posapp
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -56,25 +57,39 @@ class ProfileActivity : AppCompatActivity() {
 //        hashMap["Phone"] = "Test"
 //        FirebaseDatabase.getInstance().reference.child("Test").child("Values").updateChildren(hashMap)
 
-        val i1 = Information("Check","1234")
-        val i2 = Information("Check","123456")
-        var items = ArrayList<Information>()
-        items.add(i1)
-        items.add(i2)
-        val orderAdapter = OrderAdapter(this, R.layout.order_record, items)
+//        val i1 = Information("Check","1234")
+//        val i2 = Information("Check","123456")
+//        var items = ArrayList<Information>()
+//        items.add(i1)
+//        items.add(i2)
+//        var itemss = ArrayList<ArrayList<String>>()
+//        var i1 = ArrayList<String>()
+//        i1.add("Swra")
+//        i1.add("1234")
+//        itemss.add(i1)
+//        var i2 = ArrayList<String>()
+//        i2.add("adasd")
+//        i2.add("3456")
+//        itemss.add(i2)
+
+        val orderAdapter = OrderAdapter(this, R.layout.order_record, itemss)
+//        val orderAdapter = ArrayAdapter(this, R.layout.order_record, itemss)
         orderListView.adapter = orderAdapter
+
+        Log.e("Test", orderAdapter.count.toString())
 
         val ref = FirebaseDatabase.getInstance().reference.child("Test")
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for(d in dataSnapshot.children) {
-                    var info: Information? = d.getValue(Information::class.java)
-//                    if (info != null) {
-//                        items.add(info)
-//                    }
-                    var txt = info?.name + ": " + info?.phone
-                    Log.e("Test",txt)
-                }
+                Log.e("Test","Nothing")
+//                for(d in dataSnapshot.children) {
+//                    var info: Information? = d.getValue(Information::class.java)
+////                    if (info != null) {
+////                        items.add(info)
+////                    }
+//                    var txt = info?.name + ": " + info?.phone
+//                    Log.e("Test",txt)
+//                }
 //                for (i in items) {
 //                    Log.e("Test", i.name+" :: "+i.phone)
 //                }
