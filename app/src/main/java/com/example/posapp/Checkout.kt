@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.FirebaseDatabase
 
 
 class Checkout : AppCompatActivity() {
@@ -23,6 +24,7 @@ class Checkout : AppCompatActivity() {
         val intent = intent
         val cart = intent.getStringArrayListExtra("items")
         val restro = intent.getStringExtra("restro_name")
+        val email = intent.getStringExtra("email")
         Log.e("Checkout", restro)
         val costs = intent.getStringArrayListExtra("cost")
         val textView = findViewById<TextView>(R.id.textView5)
@@ -34,12 +36,10 @@ class Checkout : AppCompatActivity() {
         }
         for(i in 0..3) {
             var cost = costs[i].toInt()
-            if (cost!= 0) {
-                textView.append(cart[i])
-                textView.append("\n")
-                textView3.append("Rs. $cost.00\n")
-                t+=cost
-            }
+            textView.append(cart[i])
+            textView.append("\n")
+            textView3.append("Rs. $cost.00\n")
+            t+=cost
         }
         textView.append("\nGST\n")
         tot = tot.times(t)
@@ -52,20 +52,25 @@ class Checkout : AppCompatActivity() {
         val textView2 = findViewById<TextView>(R.id.textView3)
         textView2.append("Rs. $total")
 
+        val hashMap : HashMap<String,Any> = HashMap()
+        hashMap["restro"] = restro
+        hashMap["cost"] = total
+        FirebaseDatabase.getInstance().reference.child(email).child("orders").updateChildren(hashMap)
+
         val button: Button = findViewById<Button>(R.id.checkout)
         button.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
-                payUsingUpi("Pay")
+                payUsingUpi("Pay",total)
             }
         })
 
     }
 
     fun payUsingUpi(
-        name: String
+        name: String,
 //        upiId: String,
 //        note: String,
-//        amount: String
+        amount: String
     ) {
         val uri: Uri = Uri.Builder()
             .scheme("upi")

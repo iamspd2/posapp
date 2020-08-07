@@ -112,6 +112,7 @@ class Tab : AppCompatActivity() {
                 intent1.putStringArrayListExtra("items", menu as ArrayList<String>?)
                 intent1.putStringArrayListExtra("cost", costs as ArrayList<String>?)
                 intent1.putExtra("restro_name", restro)
+                intent1.putExtra("email", encEmail)
                 startActivity(intent1)
             }
         })
