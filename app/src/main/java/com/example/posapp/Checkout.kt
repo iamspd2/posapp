@@ -54,7 +54,7 @@ class Checkout : AppCompatActivity() {
 
         val hashMap : HashMap<String,Any> = HashMap()
         hashMap["restro"] = restro
-        hashMap["cost"] = total
+        hashMap["cost"] = "Rs. $total"
         val orderID = randomAlphaNumeric(7)
         FirebaseDatabase.getInstance().reference.child(email).child("orders").child(orderID).updateChildren(hashMap)
 

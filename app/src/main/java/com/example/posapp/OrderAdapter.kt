@@ -9,11 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import com.google.firebase.database.ValueEventListener
 
 class OrderHolder(v: View) {
-    val name: TextView = v.findViewById(R.id.order1)
-    val phone: TextView = v.findViewById(R.id.order2)
+    val name: TextView = v.findViewById(R.id.orderRestro)
+    val phone: TextView = v.findViewById(R.id.plText)
 }
 
 //class OrderAdapter(context: Context, private val resource: Int, private val itemList: ArrayList<Information>)
