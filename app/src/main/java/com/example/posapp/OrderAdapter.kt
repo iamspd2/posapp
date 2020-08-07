@@ -36,6 +36,20 @@ class OrderAdapter(context: Context, private val resource: Int, private val item
             view.tag = viewHolder
 
             Log.e("Test","Yo")
+
+            val i = itemList[position]
+            viewHolder.restro.text = i.restro
+            viewHolder.cost.text = i.cost
+            viewHolder.time.text = i.time
+
+            val st = i.items.split("@#@")
+            for (i in 0..st.size-1) {
+                //Log.e("Orders",s)
+                if (i == 0)
+                    viewHolder.items.append(st[i])
+                else
+                    viewHolder.items.append("\n"+st[i])
+            }
 //            val i = itemList[position]
 //
 //            viewHolder.name.text = "DSD"
@@ -50,16 +64,7 @@ class OrderAdapter(context: Context, private val resource: Int, private val item
         }
 
 
-        val i = itemList[position]
-        viewHolder.restro.text = i.restro
-        viewHolder.cost.text = i.cost
-        viewHolder.time.text = i.time
 
-        val st = i.items.split("@#@")
-        for (s in st) {
-            
-            viewHolder.items.append(s+"\n")
-        }
 
 //        Log.e("Test", i)
 
