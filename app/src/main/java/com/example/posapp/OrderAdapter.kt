@@ -14,6 +14,7 @@ class OrderHolder(v: View) {
     val restro: TextView = v.findViewById(R.id.orderRestro)
     val items: TextView = v.findViewById(R.id.orderItems)
     val cost: TextView = v.findViewById(R.id.orderAmount)
+    val time: TextView = v.findViewById(R.id.orderTime)
 }
 
 //class OrderAdapter(context: Context, private val resource: Int, private val itemList: ArrayList<Information>)
@@ -52,7 +53,13 @@ class OrderAdapter(context: Context, private val resource: Int, private val item
         val i = itemList[position]
         viewHolder.restro.text = i.restro
         viewHolder.cost.text = i.cost
-        viewHolder.items.text = i.items
+        viewHolder.time.text = i.time
+
+        val st = i.items.split("@#")
+        for (s in st) {
+            viewHolder.items.append(s+"\n")
+        }
+
 //        Log.e("Test", i)
 
 //        viewHolder.name.text = i

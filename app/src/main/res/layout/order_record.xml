@@ -7,6 +7,26 @@
     android:background="#393939">
 
     <TextView
+        android:id="@+id/orderTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plText3"
+        tools:text="27th July, 2020" />
+
+    <TextView
+        android:id="@+id/plText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ordered On"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orderItems" />
+
+    <TextView
         android:id="@+id/orderRestro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +65,7 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/orderItems" />
+        app:layout_constraintTop_toBottomOf="@+id/orderTime" />
 
     <TextView
         android:id="@+id/orderAmount"
