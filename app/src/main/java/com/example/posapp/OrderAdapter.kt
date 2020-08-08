@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import java.text.SimpleDateFormat
+import java.util.*
 
 class OrderHolder(v: View) {
     val restro: TextView = v.findViewById(R.id.orderRestro)
@@ -40,7 +42,13 @@ class OrderAdapter(context: Context, private val resource: Int, private val item
             val i = itemList[position]
             viewHolder.restro.text = i.restro
             viewHolder.cost.text = i.cost
-            viewHolder.time.text = i.time
+
+            val sfd = SimpleDateFormat("dd-MM-yyyy HH:mm")
+            val str = sfd.format(Date(i.time))
+
+            Log.e("Date", str)
+
+            viewHolder.time.text = str
 
             val st = i.items.split("@#@")
             for (i in 0..st.size-1) {

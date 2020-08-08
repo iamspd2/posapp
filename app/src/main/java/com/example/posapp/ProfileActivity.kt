@@ -16,7 +16,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_profile.*
-import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -46,14 +45,6 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-//        FirebaseDatabase.getInstance().reference.child("Test").child("Test").setValue("Connected")
-//
-//        val hashMap : HashMap<String,Any> = HashMap()
-//        hashMap["Name"] = "Test"
-//        hashMap["Phone"] = "Test"
-//        FirebaseDatabase.getInstance().reference.child("Test").child("Values").updateChildren(hashMap)
-
-//        val email = intent.getStringExtra("email")
 
         var items = ArrayList<Information>()
 
@@ -67,36 +58,65 @@ class ProfileActivity : AppCompatActivity() {
         val encEmail = email?.replace("""[.#$]""".toRegex(), ",")
 
         val ref = FirebaseDatabase.getInstance().reference.child(encEmail!!)
-        ref.addValueEventListener(object : ValueEventListener {
+        val rf = FirebaseDatabase.getInstance().reference
+
+        val query = rf.child(encEmail).child("orders").orderByChild("time")
+
+        query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                Log.e("Test","Nothing")
-
-//                val userName: String? = dataSnapshot.child("Name").getValue(String::class.java)
-//                Log.e("Test", userName)
-                var ordFlag = dataSnapshot.child("orders").exists()
-                if (!ordFlag) {
-                    Log.e("Test","Test")
-                    emptyOrder.setText("Make your first order!")
+                if (dataSnapshot.exists()){
+                    Log.e("Yes","Yes")
                 } else {
-                    val orders = dataSnapshot.child("orders").children
-
-                    for(d in orders) {
-                        var info: Information? = d.getValue(Information::class.java)
-                        if (info != null) {
-                            items.add(info)
-                        }
-                    }
-
-                    val orderAdapter = OrderAdapter(applicationContext, R.layout.order_record, items)
-                    orderListView.adapter = orderAdapter
+                    Log.e("Nono","No")
                 }
-//                orderAdapter.notifyDataSetChanged()
+
+//                for (d in dataSnapshot.children) {
+//                    var info: Information? = d.getValue(Information::class.java)
+//                    if (info != null) {
+//                        items.add(info)
+//                    }
+//                }
+//
+//                items.reverse()
+//                val orderAdapter = OrderAdapter(applicationContext, R.layout.order_record, items)
+//                orderListView.adapter = orderAdapter
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 println("The read failed: " + databaseError.code)
             }
         })
+
+//        ref.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                Log.e("Test","Nothing")
+//
+////                val userName: String? = dataSnapshot.child("Name").getValue(String::class.java)
+////                Log.e("Test", userName)
+//                var ordFlag = dataSnapshot.child("orders").exists()
+//                if (!ordFlag) {
+//                    Log.e("Test","Test")
+//                    emptyOrder.setText("Make your first order!")
+//                } else {
+//                    val orders = dataSnapshot.child("orders").children
+//
+//                    for(d in orders) {
+//                        var info: Information? = d.getValue(Information::class.java)
+//                        if (info != null) {
+//                            items.add(info)
+//                        }
+//                    }
+//
+//                    val orderAdapter = OrderAdapter(applicationContext, R.layout.order_record, items)
+//                    orderListView.adapter = orderAdapter
+//                }
+////                orderAdapter.notifyDataSetChanged()
+//            }
+//
+//            override fun onCancelled(databaseError: DatabaseError) {
+//                println("The read failed: " + databaseError.code)
+//            }
+//        })
 
 //        goToMaps.setOnClickListener { //val cartList = cart
 //            startActivity(Intent(this, MapsActivity::class.java))
