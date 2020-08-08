@@ -39,9 +39,11 @@
         <activity android:name=".PaymentActivity" />
         <activity
             android:name=".Checkout"
+            android:label="Checkout"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Tab"
+            android:label="Tab"
             android:screenOrientation="portrait" />
         <activity
             android:name=".DetailsActivity"
@@ -51,12 +53,15 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".SignUpActivity"
+            android:label="Register"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ProfileActivity"
+            android:label="Profile"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
+            android:label="Sign In"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
