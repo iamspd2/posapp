@@ -57,29 +57,28 @@ class ProfileActivity : AppCompatActivity() {
         val email = user?.email
         val encEmail = email?.replace("""[.#$]""".toRegex(), ",")
 
-        val ref = FirebaseDatabase.getInstance().reference.child(encEmail!!)
         val rf = FirebaseDatabase.getInstance().reference
 
-        val query = rf.child(encEmail).child("orders").orderByChild("time")
+        val query = rf.child(encEmail!!).child("orders").orderByChild("time")
 
         query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()){
-                    Log.e("Yes","Yes")
-                } else {
-                    Log.e("Nono","No")
-                }
 
-//                for (d in dataSnapshot.children) {
-//                    var info: Information? = d.getValue(Information::class.java)
-//                    if (info != null) {
-//                        items.add(info)
-//                    }
-//                }
-//
-//                items.reverse()
-//                val orderAdapter = OrderAdapter(applicationContext, R.layout.order_record, items)
-//                orderListView.adapter = orderAdapter
+                    for (d in dataSnapshot.children) {
+                        var info: Information? = d.getValue(Information::class.java)
+                        if (info != null) {
+                            items.add(info)
+                            Log.e("Check", info.restro)
+                        }
+                    }
+
+                    items.reverse()
+                    val orderAdapter = OrderAdapter(applicationContext, R.layout.order_record, items)
+                    orderListView.adapter = orderAdapter
+                } else {
+                    emptyOrder.text = "Make your first order!"
+                }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

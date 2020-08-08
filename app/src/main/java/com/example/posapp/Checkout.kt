@@ -63,8 +63,6 @@ class Checkout : AppCompatActivity() {
         val orderID = randomAlphaNumeric(7)
         FirebaseDatabase.getInstance().reference.child(email).child("orders").child(orderID).updateChildren(hashMap)
 
-
-
         val button: Button = findViewById<Button>(R.id.checkout)
         button.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
@@ -96,12 +94,12 @@ class Checkout : AppCompatActivity() {
             .authority("pay")
             .appendQueryParameter("pa", "dash.amiya5@oksbi") // virtual ID
             .appendQueryParameter("pn", "Amiya") // name
-            .appendQueryParameter("mc", "your-merchant-code") // optional
-            .appendQueryParameter("tr", "your-transaction-ref-id") // optional
-            .appendQueryParameter("tn", "your-transaction-note") // any note about payment
-            .appendQueryParameter("am", "1.00") // amount
+//            .appendQueryParameter("mc", "your-merchant-code") // optional
+//            .appendQueryParameter("tr", "your-transaction-ref-id") // optional
+//            .appendQueryParameter("tn", "your-transaction-note") // any note about payment
+            .appendQueryParameter("am", "5.00") // amount
             .appendQueryParameter("cu", "INR") // currency
-            .appendQueryParameter("url", "your-transaction-url") // optional
+//            .appendQueryParameter("url", "your-transaction-url") // optional
             .build()
         val GOOGLE_PAY_PACKAGE_NAME = "com.google.android.apps.nbu.paisa.user"
         val GOOGLE_PAY_REQUEST_CODE = 123
@@ -171,7 +169,7 @@ class Checkout : AppCompatActivity() {
                 Toast.makeText(this, "Transaction successful.", Toast.LENGTH_SHORT)
                     .show()
                 Log.e("UPI", "payment successfull: $approvalRefNo")
-                val intent = Intent(this, MapsActivity2::class.java)
+                val intent = Intent(this, ProfileActivity::class.java)
                 startActivity(intent)
             } else if ("Payment cancelled by user." == paymentCancel) {
                 Toast.makeText(this, "Payment cancelled by user.", Toast.LENGTH_SHORT)
@@ -193,7 +191,7 @@ class Checkout : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
-        val intent = Intent(this, MapsActivity2::class.java)
+        val intent = Intent(this, ProfileActivity::class.java)
         startActivity(intent)
     }
 
