@@ -57,10 +57,10 @@ class ProfileActivity : AppCompatActivity() {
 
         var items = ArrayList<Information>()
 
-        val sfd = SimpleDateFormat("ddth MM, yyyy HH:mm:ss")
-        val str = sfd.format(Date(1596826053965))
-
-        Log.e("Date", str)
+//        val sfd = SimpleDateFormat("dd-MM-yyyy HH:mm")
+//        val str = sfd.format(Date(1596826053965))
+//
+//        Log.e("Date", str)
 
         val user = FirebaseAuth.getInstance().currentUser
         val email = user?.email

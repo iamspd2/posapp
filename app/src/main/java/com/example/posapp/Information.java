@@ -4,13 +4,13 @@ public class Information {
     private String restro;
     private String cost;
     private String items;
-    private String time;
+    private long time;
 
-    public String getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(long time) {
         this.time = time;
     }
 
@@ -41,7 +41,7 @@ public class Information {
     public Information() {
     }
 
-    public Information(String restro, String cost, String items, String time) {
+    public Information(String restro, String cost, String items, long time) {
         this.restro = restro;
         this.cost = cost;
         this.items = items;
