@@ -66,7 +66,7 @@ class Checkout : AppCompatActivity() {
         val button: Button = findViewById<Button>(R.id.checkout)
         button.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
-                payUsingUpi("Pay",total)
+                payUsingUpi("Pay",restro,total)
             }
         })
 
@@ -85,6 +85,7 @@ class Checkout : AppCompatActivity() {
 
     fun payUsingUpi(
         name: String,
+        restro: String,
 //        upiId: String,
 //        note: String,
         amount: String
@@ -96,8 +97,8 @@ class Checkout : AppCompatActivity() {
             .appendQueryParameter("pn", "Amiya") // name
 //            .appendQueryParameter("mc", "your-merchant-code") // optional
 //            .appendQueryParameter("tr", "your-transaction-ref-id") // optional
-//            .appendQueryParameter("tn", "your-transaction-note") // any note about payment
-            .appendQueryParameter("am", "5.00") // amount
+            .appendQueryParameter("tn", restro) // any note about payment
+            .appendQueryParameter("am", amount) // amount
             .appendQueryParameter("cu", "INR") // currency
 //            .appendQueryParameter("url", "your-transaction-url") // optional
             .build()
