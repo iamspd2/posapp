@@ -65,5 +65,6 @@ Upon the completion of transaction, the user is redirected back to the ‘Profil
 <img src="https://user-images.githubusercontent.com/48145355/100761772-461c0400-3419-11eb-8e53-5740297e2a7b.jpg" width="270"/>
 
 ## Firebase Realtime Database
+The animation below is a live recording of the RTDB in Firebase console. As soon as the transaction is successful, the entry of the order is made into the database, with the fields as cost, items, restaurant name, and the timestamp. The timestamp is the server time of the database when the order was placed, and is converted into readable date and time format in the app. Moreover, each order has got a unique 7 character alphanumeric transaction ID that could be used to track the different orders that an user has made.
 
 <img src="https://user-images.githubusercontent.com/48145355/100761635-208efa80-3419-11eb-8d49-84375562cc5b.gif"/>
