@@ -44,3 +44,26 @@ The screen on the left, as it can be seen, is of the results that is shown when 
 This is the screen for the ’Tab’. This is where the user orders items from the restaurant/bar they selected. It works alongside the Omnivore API, and the Android code takes care of opening, closing tabs, ordering items, generating tickets, etc. The menu, as seen in left, is the menu obtained from the API that generates a virtual restaurant. The user name is obtained from the user data from the Firebase RTDB, that was entered during the registration process.
 
 <img src="https://user-images.githubusercontent.com/48145355/100761608-1836bf80-3419-11eb-9581-9a91e5b0f39a.jpg" width="270"/>
+
+## Checkout
+This is the screen that is displayed once the user has ‘closed’ the Tab. It contains a breakdown of the items that are ordered, the quantities in which they are ordered, and their corresponding subtotals. A GST of 5% is added to the subtotal, and a total amount is generated.
+ 
+Now, on clicking on ‘Pay Now’, the user is redirected to the Google Pay payment page without leaving the app.
+
+<img src="https://user-images.githubusercontent.com/48145355/100761318-c68e3500-3418-11eb-9164-a8e412271c82.jpg" width="270"/>
+
+## Payment
+This is the payment screen of Google Pay, that is opened upon successful verification of the user. It is done either by fingerprint verification or a Google PIN. This page is opened from within the app without leaving the app. The payment amount and a message with the restaurant name are generated automatically and doesn’t need any user involvement except paying it in a single tap.
+ 
+The user is redirected to their preferred payment option, and upon the completion of the transaction (success/failure), the user is redirected to the ‘Profile’ screen.
+
+<img src="" width="270"/>
+
+## Successful Payment
+Upon the completion of transaction, the user is redirected back to the ‘Profile’ screen with the updated list of orders and a prompt mentioning the transaction been successful upon successful payment. Otherwise, the prompt mentions that the transaction failed along with the reason for failure, that is provided by Google Pay API.
+
+<img src="https://user-images.githubusercontent.com/48145355/100761772-461c0400-3419-11eb-8e53-5740297e2a7b.jpg" width="270"/>
+
+## Firebase Realtime Database
+
+<img src="https://user-images.githubusercontent.com/48145355/100761635-208efa80-3419-11eb-8d49-84375562cc5b.gif" width="270"/>
