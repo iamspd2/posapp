@@ -8,5 +8,5 @@ It serves as the central component for your business: it’s the hub where every
 
 ![already_registered](https://user-images.githubusercontent.com/48145355/100761209-a78fa300-3418-11eb-8534-ac9f26e8c650.jpg | width=100)
 
-![](https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png | width=100)
+![](https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png =100x50)
 
