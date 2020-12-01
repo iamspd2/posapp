@@ -13,4 +13,4 @@ Let us see the screens and understand how the app works.
 ## Sign Up
 This is the screen where a new user registers themselves to this app. Proper validation checks have been added to it, besides Firebase Auth taking care of the registration process.
 
-img src="https://user-images.githubusercontent.com/48145355/100762073-93987100-3419-11eb-9653-5f07cb5e48a0.jpg" width="400"/>
+<img src="https://user-images.githubusercontent.com/48145355/100762073-93987100-3419-11eb-9653-5f07cb5e48a0.jpg" width="270"/>
