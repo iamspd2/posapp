@@ -1,4 +1,4 @@
-<h1 align="center">Restaurant - PoS App</h1>
+<h1 align="center">PoS - Restaurant App</h1>
 
 This Android project is a complete restaurant ordering app that takes care of all the Point of Sales (PoS) in a system.
 
@@ -34,3 +34,13 @@ This is the screen where a user is redirected after logging in, or signing up. T
 This is the screen where a user makes a selection of a restaurant to make an order from. Google Maps API is used for getting the Maps feature, and centers by default to the current location, and displays nearby restaurants, based on user ratings. The user can also view them based on ‘sort by’ distance as shown below.
 
 <img src="https://user-images.githubusercontent.com/48145355/100761548-0a813a00-3419-11eb-8f26-a9e8c4bc89e5.jpg" width="270"/>
+
+## Search Facility
+The screen on the left, as it can be seen, is of the results that is shown when the user searches for ‘Seattle’ on the search facility provided within the app. The app, by default, fetches a list of restaurants in the given area based on the average user ratings. But the user can opt to sort the results by ‘distance’ to find the closest restaurants or ‘cost’ to find the cheapest places. The Google Places API was used parallely with the Zomato API to achieve this result.
+
+<img src="https://user-images.githubusercontent.com/48145355/100761895-66e45980-3419-11eb-90c1-b787fa6517c0.jpg" width="270"/>
+
+## Tab
+This is the screen for the ’Tab’. This is where the user orders items from the restaurant/bar they selected. It works alongside the Omnivore API, and the Android code takes care of opening, closing tabs, ordering items, generating tickets, etc. The menu, as seen in left, is the menu obtained from the API that generates a virtual restaurant. The user name is obtained from the user data from the Firebase RTDB, that was entered during the registration process.
+
+<img src="https://user-images.githubusercontent.com/48145355/100761608-1836bf80-3419-11eb-9581-9a91e5b0f39a.jpg" width="270"/>
