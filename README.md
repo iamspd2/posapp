@@ -57,7 +57,7 @@ This is the payment screen of Google Pay, that is opened upon successful verific
  
 The user is redirected to their preferred payment option, and upon the completion of the transaction (success/failure), the user is redirected to the ‘Profile’ screen.
 
-<img src="" width="270"/>
+<img src="https://user-images.githubusercontent.com/48145355/100778017-8042d100-342c-11eb-8c88-22f7eec94936.jpg" width="270"/>
 
 ## Successful Payment
 Upon the completion of transaction, the user is redirected back to the ‘Profile’ screen with the updated list of orders and a prompt mentioning the transaction been successful upon successful payment. Otherwise, the prompt mentions that the transaction failed along with the reason for failure, that is provided by Google Pay API.
@@ -66,4 +66,4 @@ Upon the completion of transaction, the user is redirected back to the ‘Profil
 
 ## Firebase Realtime Database
 
-<img src="https://user-images.githubusercontent.com/48145355/100761635-208efa80-3419-11eb-8d49-84375562cc5b.gif" width="270"/>
+<img src="https://user-images.githubusercontent.com/48145355/100761635-208efa80-3419-11eb-8d49-84375562cc5b.gif"/>
