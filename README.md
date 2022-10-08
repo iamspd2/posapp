@@ -1,12 +1,9 @@
-<h1 align="center">PoS - Restaurant App</h1>
+<h1 align="center">Bhojan - A Food Ordering App</h1>
 
-This Android project is a complete restaurant ordering app that takes care of all the Point of Sales (PoS) in a system.
+## Disclaimer
+This is a personal project aimed at learning and demonstrating Android devlopment skills. All the likeness of restaurant names and their related info are only aimed at reflecting the usability of this app (namely the location feature). Furthermore, these details are obtained from Zomato API, which is open-sourced. None of the transactions shown below involve the restaurants, in fact the menu and prices used are dummy. However, the payments are legit, and I've used my personal GPay accounts. The APK you build from this codebase will not process payments by default, and return back to the Home page with a 'success' status. You can enable payments by providing the appropriate GPay ids in the payments code logic.
 
-## PoS and its needs
-A point of sale system (PoS) is the place where the customer makes a payment for products or services at our store. Every time a customer makes a purchase at your store, they’re completing a PoS transaction.
-It serves as the central component for your business: it’s the hub where everything, like sales, inventory and customer management merge. An efficient PoS system ensures that all operations are running smoothly in a retail environment, like bars and restaurants.
-
-Let us see the screens and understand how the app works.
+Let us see the screens and understand how the app works!
 
 <!-- <img src="" width="270"/> -->
 
