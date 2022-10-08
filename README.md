@@ -1,7 +1,7 @@
 <h1 align="center">Bhojan - A Food Ordering App</h1>
 
 ## Disclaimer
-This is a personal project aimed at learning and demonstrating Android devlopment skills. All the likeness of restaurant names and their related info are only aimed at reflecting the usability of this app (namely the location feature). Furthermore, these details are obtained from Zomato API, which is open-sourced. None of the transactions shown below involve the restaurants, in fact the menu and prices used are dummy. However, the payments are legit, and I've used my personal GPay accounts. The APK you build from this codebase will not process payments by default, and return back to the Home page with a 'success' status. You can enable payments by providing the appropriate GPay ids in the payments code logic.
+This is a personal project aimed at learning and demonstrating Android development skills. All the likeness of restaurant names and their related info are only aimed at reflecting the usability of this app (namely the location feature). Furthermore, these details are obtained from Zomato API, which is open-sourced. None of the transactions shown below involve the restaurants, in fact the menu and prices used are dummy. However, the payments are legit, and I've used my personal GPay accounts. The APK you build from this codebase will not process payments by default, and return back to the Home page with a 'success' status. You can enable payments by providing the appropriate GPay ids in the payments code logic.
 
 Let us see the screens and understand how the app works!
 
